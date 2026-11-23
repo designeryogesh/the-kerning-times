@@ -1,12 +1,12 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The Kerning Times · Edition No. 35</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap"><style>
 /* Layout: black-on-white newspaper front page, single light theme by request. Masthead, lead + AI briefs, one loud orange Prompt-of-the-Day block, three desks, calendar, sources. */
 :root{
-  --paper:#F5F1EC; --sheet:#F5F1EC; --ink:#000000; --ink-2:#000000; --rule:#E0DBD4; --border:#E0DBD4;
-  --orange:#F04D23; --orange-ink:#000000; --on-orange:#000000; --chip:#E0DBD4;
+  --paper:#000901; --sheet:#000901; --ink:#F5F1EC; --ink-2:#DCD6CE; --rule:#1F3A2C; --border:#1F3A2C;
+  --orange:#3CB043; --orange-ink:#F5F1EC; --on-orange:#F5F1EC; --chip:#1F3A2C;
   --f-display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
   --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  color-scheme:light;
+  color-scheme:dark;
 }
 
 body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-body);
@@ -24,7 +24,14 @@ p{margin:0}
 .mast h1{font-size:clamp(56px,13vw,148px);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
 .mast h1 .k{letter-spacing:-.06em}
 .mast h1 .dot{color:var(--orange)}
-.mast h1{color:#F04D23}
+.mast h1{color:#3CB043}
+html,body{background:var(--paper)!important;color:var(--ink)}
+.potd,.potd-right,.tabs button,.panel pre,.panel .tip,.panel .tip b,figcaption,.idw-col>h5{color:var(--ink)!important}
+.tabs button[aria-selected="true"]{border-bottom-color:#3CB043!important}
+.tests input{accent-color:#3CB043!important}
+.copy{background:#3CB043!important;color:#0C0E0D!important}
+.term .demo i.hit{background:#3CB043!important}
+a{color:var(--ink)!important}
 .mast-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--border);padding-top:10px}
 .mast-bot span{font:600 12px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
 
