@@ -1,0 +1,409 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Kerning Times · Edition No. 40</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap"><style>
+/* Layout: black-on-white newspaper front page, single light theme by request. Masthead, lead + AI briefs, one loud Kelly Green (brand v1.3) Prompt-of-the-Day block, three desks, calendar, sources. */
+:root{
+  --paper:#000901; --sheet:#000901; --ink:#F5F1EC; --ink-2:#DCD6CE; --rule:#1F3A2C; --border:#1F3A2C;
+  --orange:#3CB043; --orange-ink:#F5F1EC; --on-orange:#F5F1EC; --chip:#1F3A2C;
+  --f-display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+.page{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:var(--orange-ink);text-underline-offset:3px}
+h1,h2,h3{color:var(--orange);font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.02;letter-spacing:.005em}
+p{margin:0}
+.kicker{font:600 12px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink)}
+.meta{font:12px/1.4 var(--f-mono);color:var(--ink-2);letter-spacing:.04em}
+
+/* Masthead */
+.mast{display:flex;flex-direction:column;gap:12px;border-bottom:6px solid var(--border);padding-bottom:14px}
+.mast-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.mast h1{font-size:clamp(56px,13vw,148px);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
+.mast h1 .k{letter-spacing:-.06em}
+.mast h1 .dot{color:var(--orange)}
+.mast h1{color:#3CB043}
+/* Dark newspaper (Yogesh, 23 Nov 2026): #000901 ground, Cream text, Kelly headings */
+html,body{background:var(--paper)!important;color:var(--ink)}
+.potd,.potd-right,.tabs button,.panel pre,.panel .tip,.panel .tip b,figcaption,.idw-col>h5{color:var(--ink)!important}
+.tabs button[aria-selected="true"]{border-bottom-color:#3CB043!important}
+.tabs button:focus-visible,.copy:focus-visible{outline-color:var(--ink)!important}
+.tests input{accent-color:#3CB043!important}
+.copy{background:#3CB043!important;color:#0C0E0D!important}
+.term .demo i.hit{background:#3CB043!important}
+a{color:var(--ink)!important}
+.mast-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--border);padding-top:10px}
+.mast-bot span{font:600 12px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+
+/* Ticker */
+.ticker{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--border)}
+.ticker div{padding:14px 16px;display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--border)}
+.ticker div:first-child{border-left:0;padding-left:0}
+.ticker b{font:800 34px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.ticker small{font-size:13px;color:var(--ink-2);line-height:1.35}
+
+/* Front grid */
+.front{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:40px}
+.lead{display:flex;flex-direction:column;gap:16px;min-width:0}
+.lead h2{font-size:clamp(38px,5.2vw,64px);font-weight:800;text-transform:uppercase}
+.standfirst{font-size:19px;line-height:1.5;color:var(--ink-2);max-width:62ch}
+.cols{columns:2 260px;column-gap:32px}
+.cols p{margin-bottom:14px;break-inside:avoid-column}
+.why{background:var(--sheet);border:1px solid var(--border);padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.why b{font:600 12px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+
+.briefs{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--border);padding-left:28px;min-width:0}
+.briefs>h3{font-size:30px;text-transform:uppercase;padding-bottom:8px;border-bottom:3px solid var(--border)}
+.brief{padding-block:16px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.brief h4{margin:0;font:700 17px/1.3 var(--f-body)}
+.brief p{font-size:15px;color:var(--ink-2)}
+
+/* Prompt of the day */
+.potd{background:var(--paper);color:#000;border:5px solid var(--border);padding:clamp(20px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:32px}
+.potd .kicker{color:var(--on-orange)}
+.potd h2{color:var(--orange);font-size:clamp(44px,7vw,92px);font-weight:900;text-transform:uppercase;line-height:.88}
+.potd-left{display:flex;flex-direction:column;gap:16px;min-width:0}
+.potd-left p{font-size:16px;max-width:46ch}
+.tests{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tests label{display:flex;gap:10px;align-items:flex-start;font-size:15px;cursor:pointer}
+.tests input{accent-color:#000;width:18px;height:18px;margin-top:2px;flex:none}
+.score{font:600 13px var(--f-mono);letter-spacing:.06em}
+.potd-right{background:var(--paper);color:#000;border:2px solid var(--border);display:flex;flex-direction:column;min-width:0}
+.tabs{display:flex;flex-wrap:wrap;border-bottom:2px solid var(--border)}
+.tabs button{flex:1 1 auto;background:none;border:0;color:#000;opacity:.55;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:14px 12px;cursor:pointer;border-bottom:3px solid transparent}
+.tabs button[aria-selected="true"]{opacity:1;border-bottom-color:#000}
+.tabs button:focus-visible,.copy:focus-visible{outline:2px solid #000;outline-offset:2px}
+.panel{padding:20px;display:flex;flex-direction:column;gap:14px}
+.panel[hidden]{display:none}
+.panel pre{margin:0;white-space:pre-wrap;word-break:break-word;font:14px/1.65 var(--f-mono);color:#000}
+.panel .tip{font-size:14px;color:#000;border-top:1px dashed var(--border);padding-top:12px}
+.panel .tip b{color:#000}
+.panel h5{display:none;margin:0;font:600 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.copy{align-self:flex-start;background:#000;color:#fff;border:0;font:700 13px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:12px 16px;cursor:pointer}
+
+/* Desks */
+.desks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.desk{display:flex;flex-direction:column;gap:0;min-width:0}
+.desk>h3{font-size:30px;text-transform:uppercase;padding-bottom:8px;border-bottom:3px solid var(--border)}
+.story{padding-block:18px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:8px}
+.story h4{margin:0;font:800 24px/1.08 var(--f-display);text-transform:uppercase}
+.story p{font-size:15px;color:var(--ink-2)}
+.term{background:var(--sheet);border:1px solid var(--border);padding:18px;margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.term h4{margin:0;font:800 28px/1 var(--f-display);text-transform:uppercase}
+.term .demo{display:flex;gap:6px;margin-block:4px}
+.term .demo i{flex:1;height:26px;background:var(--chip)}
+.term .demo i.hit{background:#000}
+.term p{font-size:15px;color:var(--ink-2)}
+
+/* Calendar */
+.cal>h3{font-size:30px;text-transform:uppercase;padding-bottom:8px;border-bottom:3px solid var(--border)}
+.cal-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+td{padding:14px 12px 14px 0;border-bottom:1px solid var(--border);vertical-align:top;font-size:15px}
+td.d{font:800 22px/1.1 var(--f-display);white-space:nowrap;width:150px;font-variant-numeric:tabular-nums;text-transform:uppercase}
+td.w{color:var(--ink-2)}
+
+/* Sources */
+.sources{border-top:6px solid var(--border);padding-top:16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px}
+.sources ol{margin:0;padding-left:20px;columns:2 280px;column-gap:28px;font-size:13px;color:var(--ink-2)}
+.sources li{margin-bottom:6px;break-inside:avoid}
+.sources p{font-size:14px;color:var(--ink-2)}
+
+figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--border)}
+figcaption{font:12px/1.45 var(--f-mono);color:#000;border-bottom:1px solid var(--border);padding-bottom:6px}
+figcaption b{font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.credit{font-style:italic;white-space:nowrap}
+.story figure{margin-top:0}
+.desk>figure{margin-top:14px}
+.story figure img{aspect-ratio:16/9;object-fit:cover}
+.potd figure{max-width:260px}
+.briefs figure{margin-top:14px}
+/* Indian Design Watch */
+.idw{display:flex;flex-direction:column;gap:0}
+.idw>h3{font-size:30px;text-transform:uppercase;padding-bottom:8px;border-bottom:3px solid var(--border)}
+.idw-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.idw-col{display:flex;flex-direction:column;min-width:0}
+.idw-col>h5{margin:14px 0 0;font:600 12px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:#000;padding-bottom:6px;border-bottom:1px solid var(--border)}
+@media (max-width:900px){.idw-cols{grid-template-columns:1fr;gap:8px}}
+@media (max-width:900px){
+  .front,.potd{grid-template-columns:1fr}
+  .briefs{border-left:0;padding-left:0}
+  .desks{grid-template-columns:1fr}
+  .ticker{grid-template-columns:repeat(2,1fr)}
+  .ticker div:nth-child(3){border-left:0;padding-left:0}
+  .ticker div:nth-child(n+3){border-top:1px solid var(--border)}
+  .sources{grid-template-columns:1fr}
+}
+.wish{border:2px solid var(--border);padding:12px 16px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.wish b{font:800 28px/1 var(--f-display);text-transform:uppercase}
+.wish p{font-size:15px;margin:0}
+@page{size:A3;margin:0}
+@media print{
+  .wish{order:1;break-inside:avoid}
+  html,body{background:var(--paper)}
+  .mast h1{font-size:134px}
+  body{padding:12mm;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .page{max-width:none;gap:28px}
+  .tabs,.copy{display:none!important}
+  .panel[hidden]{display:flex!important}
+  .panel{padding:14px 16px}
+  .panel h5{display:block}
+  .story,.brief,.term,figure,tr,.why,.panel{break-inside:avoid}
+  .cal{break-inside:avoid}
+  .mast{order:1}.ticker{order:2}.front{order:3}.potd{order:4}.cal{order:5;break-after:page}.desks{order:6}.sources{order:7}
+  .cal{order:6;break-after:page}.idw{order:5}.desks{order:7}.sources{order:8}
+  .idw figure{display:none}
+  .idw .story{padding-block:7px}
+  .idw .story p{font-size:12px;line-height:1.4}
+  .sources ol{columns:5;font-size:9.5px}
+  .idw-col>h5{margin-top:8px}
+  .cal table{min-width:0;display:block}
+  .cal tbody{display:block;columns:3;column-gap:24px}
+  .cal tr{grid-template-columns:78px 1fr!important}
+  .cal td{font-size:12px}
+  .cal td.d{font-size:14px!important}
+  .cal td.w{font-size:11px!important}
+  .cal tr{padding-block:2px!important}
+  .cal td{line-height:1.25!important}
+  .cal>h3{padding-bottom:4px}
+  .idw .story{padding-block:5px!important}
+  .idw .story h4{font-size:19px}
+  .cal tr{display:grid;grid-template-columns:96px 1fr;column-gap:10px;break-inside:avoid;border-bottom:1px solid var(--border);padding-block:4px}
+  .cal td{border:0;padding:0;width:auto}
+  .cal td.d{grid-row:span 2;font-size:16px;width:auto}
+  .cal td.w{grid-column:2;font-size:12px}
+  .idw-cols{gap:28px}
+  .idw>h3{font-size:26px}
+  .lead figure img{max-height:300px;object-fit:cover;object-position:top}
+  .story figure img{max-height:140px}
+  .desk>figure img{max-height:170px;object-fit:cover;object-position:top}
+  .story{padding-block:12px}
+  .briefs figure img{max-height:180px;object-fit:cover}
+  .sources{padding-top:10px}
+  .sources ol{columns:3;font-size:11px}
+  .sources li{margin-bottom:3px}
+  td{padding-block:9px}
+  body{font-size:14px}
+  .page{gap:22px}
+  .cols p,.brief p,.story p,.term p{font-size:13.5px;line-height:1.5}
+  .standfirst{font-size:17px}
+  .lead h2{font-size:54px}
+  .front{break-after:page}
+  .potd{grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:24px;padding:24px;}
+  .potd h2{font-size:64px}
+  .potd-left p,.tests label{font-size:13.5px}
+  .potd figure{max-width:220px}
+  .potd-right{display:grid;grid-template-columns:1fr 1fr}
+  .panel{border-bottom:0;border-right:1px solid var(--border);border-top:1px solid var(--border)}
+  .panel pre{font-size:11.5px;line-height:1.55}
+  .panel .tip{font-size:12px}
+  .lead figure img{max-height:220px}
+  .standfirst{font-size:15.5px}
+  .lead h2{font-size:46px}
+  .cols p{font-size:12.5px!important;line-height:1.45!important}
+  .why p{font-size:13px}
+  .brief{padding-block:10px}
+  .wish{padding:8px 14px}
+  .wish b{font-size:22px}
+  .wish p{font-size:13px}
+  .ticker div{padding:8px 12px}
+  .ticker b{font-size:28px}
+  td{padding-block:4px;font-size:13px}
+  td.d{font-size:16px}
+  .potd{padding:18px;gap:18px}
+  .potd h2{font-size:50px}
+  .panel{padding:10px 12px;gap:8px}
+  .panel pre{font-size:10.5px;line-height:1.45}
+  .cal>h3{font-size:26px}
+  td{padding-block:6px}
+  td.d{font-size:18px}
+  .potd h2{font-size:56px}
+  .panel pre{font-size:11px;line-height:1.5}
+  .briefs figure img{max-height:150px}
+  .cols p{margin-bottom:10px}
+  a{color:#000;text-decoration:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{.story figure img{max-height:105px}.story p,.term p{font-size:12.5px;line-height:1.45}.story{padding-block:9px}.story h4{font-size:21px}.desk>h3{font-size:26px}.sources ol{columns:4;font-size:10px}.term{padding:12px;margin-top:10px}.sources ol{columns:5;font-size:9.5px}.sources li{margin-bottom:2px}.story figure img{max-height:96px}}
+</style><style>
+
+@media print{
+  figure img{width:auto!important;max-width:100%!important;height:auto!important;object-fit:cover}
+  .lead figure img{max-height:190px!important}
+  .story figure img{max-height:100px!important}
+  .briefs figure img{max-height:110px!important}
+  .desk>figure img{max-height:110px!important}
+  .idw figure{display:none!important}
+  .cal table{display:block}
+  .cal tbody tr:nth-child(n+9){display:none}
+  .standfirst{font-size:14px!important}
+  .sources li:nth-child(n+6){display:none}
+}
+</style></head><body><div class="page">
+<header class="mast">
+  <div class="mast-top"><span class="meta">Edition No. 40 · India</span><span class="meta">For working designers, aspiring designers &amp; design students</span></div>
+  <h1>The <span class="k">Kerning</span> Times<span class="dot">.</span></h1>
+  <div class="mast-bot"><span>Saturday, 28 November 2026</span><span>UI/UX · Graphic Design · Generative AI</span><span>Edited by Designer Yogesh</span></div>
+</header>
+
+<section class="ticker" aria-label="Numbers of the day">
+  <div><b>160</b><small>entries across eight categories for Spotify HITS India 2026, held in Mumbai on 26 November</small></div>
+  <div><b>23</b><small>winning campaigns named at Spotify HITS India. Maybelline and Cetaphil were among them</small></div>
+  <div><b>5</b><small>countries where Instagram users can now chat with Meta's Muse AI assistant in DMs</small></div>
+  <div><b>77%</b><small>of Pinterest's teen users say they turn to the app to explore creative interests (its September report)</small></div>
+</section>
+
+<section class="front">
+  <article class="lead">
+    <span class="kicker">Lead story · Graphic Design · 26 Nov</span>
+    <h2>A Glasgow studio builds a padel brand from its name to its rackets</h2>
+    <p class="standfirst">Freytag Anderson created the brand for CCO, an Edinburgh padel startup, working from naming right through to the product.</p>
+    <div class="cols">
+      <p><strong>What changed.</strong> CCO is a new premium padel brand. Freytag Anderson, a Glasgow studio that has won Scottish Design Agency of the Year four times, built the identity from the start, including the name and the rackets.</p>
+      <p><strong>Why it matters.</strong> Padel is growing fast, mainly in North America and increasingly in the UK. That also means a crowded market of kit brands fighting for fans' attention, so a clear identity counts for more.</p>
+      <p><strong>The lesson.</strong> A brand built from naming up to the product itself has one voice on court, in print and on the racket. Students can study how one studio carried the idea into physical objects.</p>
+    </div>
+    <div class="why"><b>What this means for you</b><p>Ask whether your brand idea can survive the product itself. Test a name, a logo and one physical object together before you call the identity done.</p></div>
+  </article>
+
+  <aside class="briefs">
+    <h3>AI Desk</h3>
+    <div class="brief"><span class="kicker">26 Nov · Social AI</span><h4>Meta's Muse arrives in Instagram DMs</h4><p>Users in the US, Canada, Mexico, Japan and Singapore can ask Muse about posts, places and products, plan travel itineraries and catch up on their inbox. Source: TechCrunch, via Social Samosa.</p></div>
+    <div class="brief"><span class="kicker">Reading pick · 19 Nov</span><h4>Most creatives use AI. Few tell their clients</h4><p>Envato's second survey of 1,033 creatives in 103 countries says more than half of AI users have used it on key client work without telling the client. Source: Creative Boom.</p></div>
+  </aside>
+</section>
+
+<section class="potd" aria-label="Prompt of the Day">
+  <div class="potd-left">
+    <span class="kicker">Prompt of the Day</span>
+    <h2>The Winter Café Cup Sleeve</h2>
+    <p>Brief type: cup sleeve / packaging dieline. Invented café CHAI TALA, 3:1 flat sleeve. Tests the wrap, the typography and the exact text on a curved surface.</p>
+    <ul class="tests">
+      <li><label><input type="checkbox"> The sleeve reads as one flat 3:1 dieline with a seam at the join</label></li>
+      <li><label><input type="checkbox"> The name CHAI TALA is spelled exactly and stays legible</label></li>
+      <li><label><input type="checkbox"> Exactly three cups or chai glasses appear, with no people or hands</label></li>
+      <li><label><input type="checkbox"> Hindi text (चाय तला) is correct and not garbled</label></li>
+      <li><label><input type="checkbox"> No brand logos, deities, coins or medical claims</label></li>
+    </ul>
+    <span class="score">Score: ___ / 5</span>
+  </div>
+  <div class="potd-right">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="t1" aria-selected="true" aria-controls="p1">Any tool</button>
+      <button role="tab" id="t2" aria-selected="false" aria-controls="p2">Midjourney V8</button>
+      <button role="tab" id="t3" aria-selected="false" aria-controls="p3">Nano Banana</button>
+      <button role="tab" id="t4" aria-selected="false" aria-controls="p4">ChatGPT / GPT Image</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+      <h5>Any tool</h5>
+      <pre>Design a 3:1 flat dieline for a paper coffee cup sleeve. Café name CHAI TALA in bold condensed sans, top centre. Below it the Hindi line चाय तला in a smaller serif. Show three chai glasses drawn in flat ochre, cream and forest green, spaced evenly. Background warm cream, one thin dark green seam line at both ends. No people, no hands, no logos. Print-ready flat, no mockup, no shadows.</pre>
+      <p class="tip"><b>Why it works:</b> flat dieline wording stops the tool from drawing a 3D cup.</p>
+      <button class="copy">Copy</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <h5>Midjourney V8</h5>
+      <pre>flat 3:1 paper coffee cup sleeve dieline, café name "CHAI TALA" bold condensed sans top centre, Hindi line चाय तला smaller serif below, three chai glasses flat ochre cream forest green, thin dark green seam both ends, no people no hands no logos --ar 3:1 --style raw --v 8</pre>
+      <p class="tip"><b>Why it works:</b> --ar 3:1 sets the canvas; --style raw keeps the flat print look.</p>
+      <button class="copy">Copy</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+      <h5>Nano Banana</h5>
+      <pre>Step 1: Generate a flat 3:1 cup sleeve dieline with three chai glasses and no text.
+Step 2: Edit: add the café name CHAI TALA top centre in bold condensed sans, then the Hindi line चाय तला below it in a serif. Keep the glasses unchanged.</pre>
+      <p class="tip"><b>Why it works:</b> adding text in a second step keeps the Hindi spelling easier to check.</p>
+      <button class="copy">Copy</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+      <h5>ChatGPT / GPT Image</h5>
+      <pre>Create a flat 3:1 paper cup sleeve dieline.
+1. Top centre: CHAI TALA, bold condensed sans.
+2. Below it: चाय तला, smaller serif.
+3. Middle: three chai glasses, flat ochre, cream and forest green, evenly spaced.
+4. Both ends: one thin dark green seam line.
+5. Background warm cream. No people, hands, logos or mockup.</pre>
+      <p class="tip"><b>Why it works:</b> a numbered layout gives the model a fixed order to follow.</p>
+      <button class="copy">Copy</button>
+    </div>
+  </div>
+</section>
+
+<section class="idw">
+  <h3>Indian Design Watch</h3>
+  <div class="idw-cols">
+    <div class="idw-col">
+      <h5>Design in India</h5>
+      <div class="story"><span class="kicker">Nothing new verified · 28 Nov</span><h4>No Indian identity story this run</h4><p>No Indian logo, identity, packaging or type story from 24–27 Nov could be checked against a source text. This slot is left open rather than filled with older work.</p></div>
+    </div>
+    <div class="idw-col">
+      <h5>New campaigns</h5>
+      <div class="story"><span class="kicker">Maybelline New York · Spotify HITS India · 26 Nov</span><h4>“Maybe It's My Stage”</h4><p>Maybelline made its own music IP with Spotify, with a live stage moment. The campaign reached around 42 million people and lifted ad recall and brand recommendation by 19%. Agency not named in the source.</p></div>
+      <div class="story"><span class="kicker">Cetaphil · Spotify HITS India · 26 Nov</span><h4>From screen to stage to scroll</h4><p>Cetaphil launched its SA Cleanser with Spotify ads, a live experience zone at I-Pop Icons Live and creator content. It was also a first for Spotify India: an Alter Agents creative test. Agency not named.</p></div>
+    </div>
+    <div class="idw-col">
+      <h5>Agency news &amp; awards</h5>
+      <div class="story"><span class="kicker">Spotify HITS India 2026 · 26 Nov</span><h4>23 winners from 160 entries</h4><p>Winners at the third Spotify HITS India across eight categories show that culture-first, non-interruptive ads work best. The source does not name the agencies behind each winner.</p></div>
+      <div class="story"><span class="kicker">Dentsu · 27 Nov</span><h4>Karthik Nagarajan joins Dentsu</h4><p>He leaves WPP Production India, where he was CEO, to join Dentsu. His earlier roles include GroupM and Chief Content Officer at Wavemaker India. Social Samosa, citing sources.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cal">
+  <h3>Mark Your Calendar</h3>
+  <div class="cal-wrap"><table><tbody>
+    <tr><td class="d">6 Dec</td><td class="w">Adobe Black Friday offer ends (from earlier coverage, Creative Bloq 13 Nov)</td></tr>
+    <tr><td class="d">10–11 Mar</td><td class="w">Motion North 2027, Freight Island, Manchester (Creative Boom, 9 Nov)</td></tr>
+    <tr><td class="d">14 Jan</td><td class="w">Cannes Lions 2027 entries open (Adgully, 6 Nov)</td></tr>
+    <tr><td class="d">11 May</td><td class="w">Clio Awards 2027 winners (MxMIndia, 13 Nov)</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="desks">
+  <div class="desk">
+    <h3>Graphic Design</h3>
+    <div class="story"><h4>Neville Brody moves to Toaster</h4><p>Creative Boom's November roundup: Brody has left for Toaster, saying brand thinking should start at the beginning. Apple's agency TBWA\Media Arts Lab has named its first global chief design officer. Independent studios had a strong month.</p></div>
+    <div class="story"><span class="kicker">Reading pick · 16 Nov</span><h4>Cigarette packs for the AI hype</h4><p>Max Cameron's satirical packs look like ordinary cigarettes, but the printed reassurance says AI can save you from lung cancer. It is a sharp use of packaging for a serious point.</p></div>
+    <div class="story"><span class="kicker">Reading pick · 16 Nov</span><h4>A shape-shifting character for Reset</h4><p>Studio Kiln built Ester, a character made of tumbling blocks, for the weight-loss app Reset. It is a softer identity for an app that avoids calorie nagging.</p></div>
+  </div>
+  <div class="desk">
+    <h3>UI / UX</h3>
+    <div class="story"><h4>WhatsApp schedules messages</h4><p>Press and hold send, then pick a time from 10 minutes to 14 days ahead. It works in one-to-one and group chats, and messages still send if the phone is off. Rolling out globally over the coming weeks.</p></div>
+    <div class="story"><h4>LinkedIn adds a monetisation tab</h4><p>Creators get a dedicated tab in profile analytics. It shows earning opportunities, prospect suggestions and Creator Marketplace data.</p></div>
+    <div class="story"><h4>Pinterest rebuilds parental controls</h4><p>One dashboard now covers screen time, profile visibility and notifications. Parents can limit how much AI-generated content teens see and turn autoplay on or off.</p></div>
+  </div>
+  <div class="desk">
+    <h3>Student Corner</h3>
+    <div class="term">
+      <span class="kicker">Term of the day</span>
+      <h4>Serial position effect</h4>
+      <div class="demo" aria-hidden="true"><i class="hit"></i><i></i><i></i><i></i><i></i><i class="hit"></i></div>
+      <p>People remember the first and last items in a list best. Put the key item at the start or end of a menu, nav bar or card set, not in the middle.</p>
+    </div>
+    <div class="story"><h4>Student task</h4><p>Build a six-item menu card for a chai café. Use a plain list. Ask three people to recall the items after 30 seconds, then move the most important item and test again.</p></div>
+  </div>
+</section>
+
+<footer class="sources">
+  <p><strong>Sources</strong></p>
+  <ol>
+    <li>Creative Boom: Freytag Anderson padel brand, 26 Nov; November roundup, 24 Nov; Max Cameron, 16 Nov; Studio Kiln/Reset, 16 Nov; Envato AI survey, 19 Nov</li>
+    <li>Social Samosa: Meta Muse in Instagram DMs, 26 Nov; WhatsApp scheduled messages, 26 Nov; LinkedIn monetisation tab, 27 Nov; Pinterest parental controls, 27 Nov; Dentsu appointment, 27 Nov</li>
+    <li>afaqs: Spotify HITS India 2026 winners, 27 Nov</li>
+  </ol>
+  <p>This is a lighter edition: no images were used because no source images were downloaded this run. Images, when used, belong to the publishers credited under each one.</p>
+</footer>
+</div><script>
+(function(){
+  var tabs=document.querySelectorAll('.tabs [role=tab]');
+  tabs.forEach(function(b){b.addEventListener('click',function(){
+    tabs.forEach(function(x){x.setAttribute('aria-selected','false');});
+    b.setAttribute('aria-selected','true');
+    document.querySelectorAll('.potd-right .panel').forEach(function(p){p.hidden=(p.getAttribute('aria-labelledby')!==b.id);});
+  });});
+  document.querySelectorAll('.copy').forEach(function(c){c.addEventListener('click',function(){
+    var pre=c.parentElement.querySelector('pre'); try{navigator.clipboard.writeText(pre.textContent);c.textContent='Copied';}catch(e){}
+  });});
+})();
+</script></body></html>
